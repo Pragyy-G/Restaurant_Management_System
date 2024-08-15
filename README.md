@@ -1,36 +1,33 @@
-# SQL Details  
+# Implementation
 
-This directory has base data for our project.  
-
-## Creation  
-- Make a Database called *restaurant* with details in the [database.js](../code/database.js) file
-- Run [tables.sql](tables.sql) to create the relations
-- To generate the dataset:  
-Run: python3 [insertdata.py](insertdata.py) (should be in the same folder as the .txt files)
+## Prerequisites:  
+- sudo npm install -g node-modules  
+- npm install express  
+- npm install pg  
+- npm install bcrypt  
+- npm install ejs  
+- npm install moment --save
   
-## Insertion  
-Run the other sql files to insert tuples in the following order: (order is such that all foreign key violations are avoided)  
-- [accounts.sql](accounts.sql)
-- [ingredients.sql](ingredients.sql)
-- [dishes.sql](dishes.sql)
-- [customers.sql](customers.sql)
-- [customer_contact.sql](customer_contact.sql)
-- [staff.sql](staff.sql)
-- [staff_contact.sql](staff_contact.sql)
-- [sitting.sql](sitting.sql)
-- [contains.sql](contains.sql)
-- [orders.sql](orders.sql)
-- [cooks.sql](cooks.sql)
-- [payment.sql](payment.sql)
-- [tracks.sql](tracks.sql)
-- [delivers.sql](delivers.sql)
-- [pay_by.sql](pay_by.sql)
+If you don't have postgres installed:  
+- sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'  
+- wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -  
+- sudo apt-get update  
+- sudo apt-get -y install postgresql   
+ 
+## Run  
+SET UP the database.js file, Create a database called "restaurant"  
+Run node app.js on the terminal  
 
-## Running on Postgres  
-Either of the 2 below options: 
-- Use Query Editor on pgAdmin4 interface
-- Execute following commands on terminal:
-  - sudo -i -u postgres
-  - psql inside new shell spawned
-  - \c restaurant
-  - \i path_to_Sql_file
+## App Link:  
+- The server will be live at: http://localhost:3000/  
+
+## Implementation Details:  
+- We have used the MVC architecture since it simplifies the system by separating into models (for querying the DB), controllers (middleware) and views (frontend).
+- Rest can be found in the ppt and the report.  
+
+## Error Handling:
+In case you get an error:  DbDriver "config": /var/cache/debconf/config.dat is locked by another process: Resource temporarily unavailable  
+- sudo fuser -v /var/cache/debconf/config.dat  
+- sudo kill PID 
+
+All other errors will be displayed on the terminal since we have used *.catch(err->console.log(err))*
