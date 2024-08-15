@@ -1,18 +1,36 @@
-# Restaurant Management System  
+# SQL Details  
 
-This project was done as part of the Database Systems Lab (CS387) in the third year of our undergrad. 
+This directory has base data for our project.  
 
-## Highlights
-- Created a GUI website application for a Restaurant Management System with cookie based login authentication
-- The application creates an **ordering pipeline** (placing an order, alloting to a chef, then served by a waiter) that simulates a real-world restaurant system
-- A customer can view his order history, *recommended* dishes, filter dishes based on cuisine and budget and place an order, chef/waiter can view profile and complete orders alloted
-- The owner can view and update inventory and employee information, allot orders to chef/waiters and can view *analytics and graphs* on top dishes, top employees and statistics on profits, expenditure and wastage (Analytics filterable on date ranges)
-- Used MVC architecture in **NodeJS (Express)**, PostgreSQL, Bootstrap, ChartJS, html2pdf.js
+## Creation  
+- Make a Database called *restaurant* with details in the [database.js](../code/database.js) file
+- Run [tables.sql](tables.sql) to create the relations
+- To generate the dataset:  
+Run: python3 [insertdata.py](insertdata.py) (should be in the same folder as the .txt files)
+  
+## Insertion  
+Run the other sql files to insert tuples in the following order: (order is such that all foreign key violations are avoided)  
+- [accounts.sql](accounts.sql)
+- [ingredients.sql](ingredients.sql)
+- [dishes.sql](dishes.sql)
+- [customers.sql](customers.sql)
+- [customer_contact.sql](customer_contact.sql)
+- [staff.sql](staff.sql)
+- [staff_contact.sql](staff_contact.sql)
+- [sitting.sql](sitting.sql)
+- [contains.sql](contains.sql)
+- [orders.sql](orders.sql)
+- [cooks.sql](cooks.sql)
+- [payment.sql](payment.sql)
+- [tracks.sql](tracks.sql)
+- [delivers.sql](delivers.sql)
+- [pay_by.sql](pay_by.sql)
 
-## Deliverables  
-The project was spread out over several deliverables which can be found here:  
-
-- *Deliverable 1*: Scope Document: [Google Doc](https://docs.google.com/document/d/1FnyioBfU3OCG5oa1TRMePYhNZkhZcvEbpPk0jPS9zxA/edit?usp=sharing) or [pdf](dlvrb1.pdf)  
-- *Deliverable 2*: Analysis, Requirements, ER Model, Use Cases, Technology Choices: [Google Doc](https://docs.google.com/document/d/14BrTwc-z4wj9T7tjKwmR-RHYfHrgrorMcejndkvhWLM/edit) or [pdf](dlvrb2.pdf)  
-- *Deliverable 3*: Data Model, Generation, Screen Designs, Transactions: [Google Doc](https://docs.google.com/document/d/1MKbRuC2MHaueAgwyGKugyBJeGGghK4Oh-jv-UHzJoJo/edit)  or [pdf](dlvrb3.pdf)  
-- *Deliverable 4*: Detailed Test Plan: [Google Doc](https://docs.google.com/document/d/1VO4FULHOvVtQ_lfVXpOZRXIs28vhP0TCUWWLy2kc-eM/edit?usp=sharing) or [pdf](dlvrb4.pdf) 
+## Running on Postgres  
+Either of the 2 below options: 
+- Use Query Editor on pgAdmin4 interface
+- Execute following commands on terminal:
+  - sudo -i -u postgres
+  - psql inside new shell spawned
+  - \c restaurant
+  - \i path_to_Sql_file
